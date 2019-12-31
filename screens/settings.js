@@ -69,12 +69,8 @@ class Settings extends Component {
             })
     };
 
-    _logoutUser = async () => {
-        await AsyncStorage.clear();
-        this.props.navigation.navigate('AuthLoading')
-    }
-
     _handleLogout = async () => {
+        console.log(this.state);
         axios({
             method: 'GET',
             url: 'https://beatrize.dev/grocery_public/api/logout',
@@ -85,7 +81,8 @@ class Settings extends Component {
         })
             .then((res) => {
                 if (res.data.logout) {
-                    this._logoutUser();
+                    AsyncStorage.clear();
+                    this.props.navigation.navigate('AuthLoading')
                 }
             })
             .catch((err) => {

@@ -88,6 +88,6 @@ If you get an error regarding react-native-prompt-android make sure it's install
   getToken() in every screen/component and set the token in the state. the ideal solution would be to have
   the getToken() function once in api.js and make all request there.
   - [ ] Migrate from npm to Yarn
-  - [ ] Fix issue where the user will have to close and reopen the app if the email or password is incorrect.
+  - [x] Fix issue where the user will have to close and reopen the app if the email or password is incorrect.
   - [ ] Remove AsyncStorage from react-native and use react-native-community package.
   - [ ] Remove usage from componentWillMount().

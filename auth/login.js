@@ -34,31 +34,19 @@ class Login extends Component {
         }).then((res) => {
             if (res.data.success) {
                 AsyncStorage.setItem("token", res.data.token);
-                // AsyncStorage.setItem("token_expires", res.data.expires);
                 AsyncStorage.setItem("isLoggedIn", '1')
                 AsyncStorage.setItem("user", JSON.stringify(res.data.user));
-                
-                /*
-                if (_.isEmpty(res.data.expires)) {
-                    AsyncStorage.setItem('setToExpireAt', 'never');
-                } else {
-                    let minutes = Math.floor(res.data.expires / 60);
-
-                    let now = new Date();
-                    now.setMinutes(now.getMinutes() + minutes);
-                    now = new Date(now);
-
-                    AsyncStorage.setItem('setToExpireAt', now.toLocaleTimeString());
-                }
-                */
-
-                if (AsyncStorage.getItem("token") !== null || AsyncStorage.getItem("token") !== undefined) {
-                    this.props.navigation.navigate('App')
-                }
+                AsyncStorage.getItem("token")
+                    .then((token) => {
+                        if (token !== null) {
+                            this.props.navigation.navigate('App')
+                        }
+                    })
 
             }
         })
         .catch((err) => {
+            // console.log('err', err);
             if (err.response.data.error) {
                 this.setState({
                     loginErrorMessage: err.response.data.error

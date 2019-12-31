@@ -17,27 +17,9 @@ class AuthLoading extends Component {
 
     }
 
-    _handleLogout = async () => {
-        await AsyncStorage.clear();
-        this.props.navigation.navigate('AuthLoading')
-    }
-
     _checkLogin = async () => {
         const loggedInStatus = await AsyncStorage.getItem('isLoggedIn');
-        // const setToExpireAt = await AsyncStorage.getItem('setToExpireAt');
-        // token = await AsyncStorage.getItem('token');
-        
-
-        this.props.navigation.navigate(loggedInStatus !== '1' ? 'Auth' : 'App');
-
-        /*
-        let now = new Date();
-
-        if (setToExpireAt < now.toLocaleTimeString()) {
-            this._handleLogout();
-        }
-        */
-
+        this.props.navigation.navigate(loggedInStatus != '1' ? 'Auth' : 'App');
     }
 
     render() {
