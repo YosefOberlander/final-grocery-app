@@ -70,7 +70,6 @@ class Settings extends Component {
     };
 
     _handleLogout = async () => {
-        console.log(this.state);
         axios({
             method: 'GET',
             url: 'https://beatrize.dev/grocery_public/api/logout',

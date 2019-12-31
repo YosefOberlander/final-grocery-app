@@ -1,9 +1,9 @@
 {
   "devToolsPort": 19002,
-  "expoServerPort": 19000,
-  "packagerPort": 19001,
-  "packagerPid": 40449,
-  "expoServerNgrokUrl": "https://32-4ni.yosef7908.grocery.exp.direct",
-  "packagerNgrokUrl": "https://packager.32-4ni.yosef7908.grocery.exp.direct",
-  "ngrokPid": 40479
+  "expoServerPort": null,
+  "packagerPort": null,
+  "packagerPid": null,
+  "expoServerNgrokUrl": null,
+  "packagerNgrokUrl": null,
+  "ngrokPid": null
 }
