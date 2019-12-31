@@ -31,7 +31,22 @@ class Items extends Component {
         }
 
         if (createListMode == false) {
-
+            headerRight = (
+                <AntDesignIcon
+                    name="plus"
+                    size={21}
+                    style={{padding: 10, color: '#8A8A8F'}}
+                    onPress={() => _self.handleNewItemNavigate()}
+                />
+            ),
+                headerLeft = (
+                    <AntDesignIcon
+                        name="sync"
+                        size={18}
+                        style={{padding: 10, paddingLeft: 15, color: '#8A8A8F'}}
+                        onPress={() => _self.fetchItems()}
+                    />
+                )
         } else {
             headerRight = (
                 <TouchableOpacity onPress={() => _self._onOpenActionSheet()}>
@@ -92,20 +107,23 @@ class Items extends Component {
     };
 
     fetchItems = () => {
-        this.state.items = [];
+        this.setState({
+            items: []
+        })
 
+        // return;
         axios({
             method: 'GET',
             url: 'https://beatrize.dev/grocery_public/api/fetchItems',
             headers:{
                 Accept: 'application/json',
-                'Authorization': "Bearer " + this.state.token,
+                'Authorization': `Bearer ${this.state.token}`
             },
         })
             .then((res) => {
                 if (res.data.success) {
-                
-                    res.data.items.forEach(elm => {
+                    let ApiItems = res.data.items;
+                    ApiItems.forEach(elm => {
                         this.setState({
                             items: this.state.items.concat(elm),
                             loading: false
@@ -116,7 +134,7 @@ class Items extends Component {
             })
             .catch((err) => {
                 // Alert.alert(err);
-                console.log(err.response);
+                // console.log(err.response);
             })
     }
 
@@ -345,10 +363,6 @@ class Items extends Component {
                             this.state.items.map((l, i) => (
                                 <ListItem
                                     key={i}
-                                    leftAvatar={{ 
-                                        source: {uri: l.image == null ? null : `${baseUrl}/getImage/${l.image.file_name}`},
-                                        renderPlaceholderContent: <ActivityIndicator/>
-                                    }}
                                     title={l.name}
                                     subtitle={'Preferred Store - ' +  l.store}
                                     bottomDivider

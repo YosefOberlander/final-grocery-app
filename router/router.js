@@ -65,13 +65,40 @@ const ListsStacks = createStackNavigator({
 
 const BottomNavigator = createBottomTabNavigator({
     Items: {
-        screen: ItemsStack
+        screen: ItemsStack,
+        navigationOptions: {
+            tabBarIcon: ({ tintColor }) => {
+                return <AntDesignIcon
+                    name="inbox"
+                    size={21}
+                    color={tintColor}
+                />
+            }
+        }
     },
     Lists: {
-        screen: ListsStacks
+        screen: ListsStacks,
+        navigationOptions: {
+            tabBarIcon: ({ tintColor }) => {
+                return <AntDesignIcon
+                    name="bars"
+                    size={21}
+                    color={tintColor}
+                />
+            }
+        }
     },
     Settings: {
-        screen: Settings
+        screen: Settings,
+        navigationOptions: {
+            tabBarIcon: ({ tintColor }) => {
+                return <AntDesignIcon
+                    name="setting"
+                    size={21}
+                    color={tintColor}
+                />
+            }
+        }
     }
 });
 

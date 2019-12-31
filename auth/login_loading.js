@@ -25,7 +25,7 @@ class AuthLoading extends Component {
     _checkLogin = async () => {
         const loggedInStatus = await AsyncStorage.getItem('isLoggedIn');
         // const setToExpireAt = await AsyncStorage.getItem('setToExpireAt');
-        token = await AsyncStorage.getItem('token');
+        // token = await AsyncStorage.getItem('token');
         
 
         this.props.navigation.navigate(loggedInStatus !== '1' ? 'Auth' : 'App');
