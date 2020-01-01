@@ -21,7 +21,8 @@
       "versionCode": 1,
       "adaptiveIcon": {
         "foregroundImage": "assets/android_adapt_icons/foreAndriod.png",
-        "backgroundImage": "assets/android_adapt_icons/androidBckg.png"
+        "backgroundImage": "assets/android_adapt_icons/curvedBackground.png",
+        "backgroundColor": "#FF8ABB"
       }
     }
   }
