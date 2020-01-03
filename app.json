@@ -20,7 +20,7 @@
       "package": "host.dev.beatrize.Grocery",
       "versionCode": 1,
       "adaptiveIcon": {
-        "foregroundImage": "assets/android_adapt_icons/foreAndriod.png",
+        "foregroundImage": "assets/android_adapt_icons/grapes3And.png",
         "backgroundImage": "assets/android_adapt_icons/curvedBackground.png",
         "backgroundColor": "#FF8ABB"
       }
