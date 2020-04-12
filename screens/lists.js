@@ -7,12 +7,14 @@ import {
 } from "react-native";
 import { SearchBar, ListItem, CheckBox, Divider } from "react-native-elements";
 import axios from "axios";
+import {NavigationEvents} from "react-navigation";
 
 class Lists extends Component {
 
     state = {
         searchTerm: "",
         lists: [],
+        listsArray: [],
         completedList: [],
         uncompletedList: [],
         token: null
@@ -22,6 +24,15 @@ class Lists extends Component {
         this.setState({
             searchTerm: search
         });
+
+        const newData = this.state.listsArray.filter(item => {
+            const itemData = `${item.list_title.toUpperCase()}`;
+            const textData = search.toUpperCase();
+
+            return itemData.indexOf(textData) > -1;
+        });
+
+        this.setState({ lists: newData });
     }
 
     _getToken = ()  => {
@@ -39,6 +50,7 @@ class Lists extends Component {
 
         this.setState({
             lists: [],
+            listsArray: [],
             completedList: [],
             uncompletedList: []
         });
@@ -54,11 +66,12 @@ class Lists extends Component {
             .then((res) => {
                 if (res.data.success) {
 
+                    this.setState({
+                        lists: res.data.lists,
+                        listsArray: res.data.lists
+                    });
+
                     res.data.lists.forEach(elm => {
-                        
-                        this.setState({
-                            lists: this.state.lists.concat(elm)
-                        });
 
                         if (elm.completed != 0) {
                             this.setState({
@@ -145,6 +158,8 @@ class Lists extends Component {
                     </View>
 
                 </View>
+
+                <NavigationEvents onDidFocus={() => this.fetchLists()}></NavigationEvents>
             </ScrollView>
         );
     }

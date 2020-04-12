@@ -14,6 +14,7 @@ import _ from 'lodash'
 import prompt from 'react-native-prompt-android';
 import BottomSheet from "react-native-bottomsheet";
 import axios from "axios";
+import {NavigationEvents} from "react-navigation";
 
 let _self = null;
 
@@ -70,6 +71,7 @@ class Items extends Component {
         this.state = {
             searchTerm: '',
             items: [],
+            itemsArray: [],
             createListMode: false,
             selectedItems: [],
             refreshing: false,
@@ -83,17 +85,15 @@ class Items extends Component {
             searchTerm: search
         });
 
-        /*
-        const formatQuery = this.state.searchTerm.toLowerCase();
-        const data = _.filter(this.state.items, item => {
-            return contains(item, formatQuery);
+        const newData = this.state.itemsArray.filter(item => {
+            const itemData = `${item.name.toUpperCase()} ${item.store.toUpperCase()} ${item.price.toUpperCase()}`;
+            const textData = search.toUpperCase();
+
+            return itemData.indexOf(textData) > -1;
         });
 
-        this.setState({
-            searchTerm: formatQuery, items: data
-        });
-        */
-    }
+        this.setState({ items: newData });
+    };
 
      _getToken = ()  => {
         AsyncStorage.getItem("token")
@@ -108,8 +108,9 @@ class Items extends Component {
 
     fetchItems = () => {
         this.setState({
-            items: []
-        })
+            items: [],
+            itemsArray: []
+        });
 
         // return;
         axios({
@@ -123,11 +124,10 @@ class Items extends Component {
             .then((res) => {
                 if (res.data.success) {
                     let ApiItems = res.data.items;
-                    ApiItems.forEach(elm => {
-                        this.setState({
-                            items: this.state.items.concat(elm),
-                            loading: false
-                        })
+                    this.setState({
+                        items: res.data.items,
+                        itemsArray: res.data.items,
+                        loading: false
                     });
 
                 }
@@ -389,6 +389,9 @@ class Items extends Component {
                     </View>
 
                 </View>
+
+                <NavigationEvents onDidFocus={() => this.fetchItems()}></NavigationEvents>
+
             </ScrollView>
         );
     }
