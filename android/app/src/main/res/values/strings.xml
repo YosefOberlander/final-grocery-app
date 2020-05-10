@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Private Grocery App</string>
+    <string moduleConfig="true" name="CodePushDeploymentKey">OB3gNgnp_QQwGZZ51NOYgtwGk554tkBLkc1FX</string>
 </resources>

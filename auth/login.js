@@ -8,6 +8,7 @@ import { Input, Button } from "react-native-elements";
 import axios from "axios";
 // import { baseUrl } from "../helpers/api";
 import _ from 'lodash';
+import Text from "react-native-web/dist/exports/Text";
 
 // const AppleBaseUrl = 'https://beatrize.dev/grocery_public/api';
 // const AppleBaseUrl = 'http://127.0.0.1:8000/api';

@@ -95,3 +95,4 @@ If you get an error regarding react-native-prompt-android make sure it's install
   ## CodePush
   
   codepush push update for ios - `appcenter codepush release-react -a yosef-surplusr-us.com/Grocery -d Production`
+  codepush push update for android - `appcenter codepush release-react -a yosef-surplusr-us.com/Grocery-1 -d Production`
