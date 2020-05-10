@@ -86,7 +86,12 @@ class Items extends Component {
         });
 
         const newData = this.state.itemsArray.filter(item => {
-            const itemData = `${item.name.toUpperCase()} ${item.store.toUpperCase()} ${item.price.toUpperCase()}`;
+            let itemData;
+            if (item.store !== null && item.store !== 'undefined') {
+                itemData = `${item.name.toUpperCase()} ${item.store.toUpperCase()}`;
+            } else {
+                itemData = `${item.name.toUpperCase()}`;
+            }
             const textData = search.toUpperCase();
 
             return itemData.indexOf(textData) > -1;
