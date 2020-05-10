@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {Alert, Platform, StyleSheet, Text, View} from 'react-native';
 import {AppContainer} from "./router/router";
 import codePush from 'react-native-code-push';
+import Toast from 'react-native-simple-toast';
 
 class App extends Component {
 
@@ -9,25 +10,31 @@ class App extends Component {
     switch(status) {
       case codePush.SyncStatus.CHECKING_FOR_UPDATE:
         // console.log("Checking for updates.");
-          Alert.alert('checking for updates')
+        Toast.show('checking for updates', Toast.SHORT);
+          // Alert.alert('checking for updates')
         break;
       case codePush.SyncStatus.DOWNLOADING_PACKAGE:
-        console.log("Downloading package.");
+        Toast.show('Downloading package.', Toast.LONG);
+        // console.log("Downloading package.");
         break;
       case codePush.SyncStatus.INSTALLING_UPDATE:
-        console.log("Installing update.");
+        Toast.show('Installing update.', Toast.LONG);
+        // console.log("Installing update.");
         break;
       case codePush.SyncStatus.UP_TO_DATE:
-        console.log("Up-to-date.");
+        Toast.show('Up-to-date.', Toast.SHORT);
+        // console.log("Up-to-date.");
         break;
       case codePush.SyncStatus.UPDATE_INSTALLED:
-        console.log("Update installed.");
+        Toast.show('Update installed.', Toast.SHORT);
+        // console.log("Update installed.");
         break;
     }
   }
 
   codePushDownloadDidProgress(progress) {
-    console.log(progress.receivedBytes + " of " + progress.totalBytes + " received.");
+    Toast.show(progress.receivedBytes + " of " + progress.totalBytes + " received.", Toast.SHORT);
+    // console.log(progress.receivedBytes + " of " + progress.totalBytes + " received.");
   }
 
   render() {
@@ -38,7 +45,8 @@ class App extends Component {
 }
 
 const codePushOptions = {
-  checkFrequency: codePush.CheckFrequency.ON_APP_START
+  checkFrequency: codePush.CheckFrequency.ON_APP_START,
+  installMode: codePush.InstallMode.IMMEDIATE
 };
 
 export default codePush(codePushOptions)(App);

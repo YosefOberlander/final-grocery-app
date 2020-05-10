@@ -25,6 +25,7 @@
     "react-native-prompt-android": "^1.1.0",
     "react-native-reanimated": "^1.4.0",
     "react-native-screens": "^2.0.0-alpha.22",
+    "react-native-simple-toast": "^1.1.2",
     "react-native-unimodules": "~0.7.0",
     "react-native-vector-icons": "^6.6.0",
     "react-native-web": "~0.11.7",
