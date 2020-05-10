@@ -52,7 +52,7 @@
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Allow Private Grocery App to access your microphone</string>
 	<key>NSMotionUsageDescription</key>
-	<string>Allow Private Grocery App to access your device's accelerometer</string>
+	<string>Allow Private Grocery App to access your device&apos;s accelerometer</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>Give Private Grocery App periences permission to save photos</string>
 	<key>NSPhotoLibraryUsageDescription</key>
@@ -73,5 +73,7 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>CodePushDeploymentKey</key>
+	<string>hlPWEc1hekW1shYeLHHaKTtTg2kx56Tap4L2r</string>
 </dict>
 </plist>

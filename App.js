@@ -1,14 +1,47 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View } from 'react-native';
+import {Alert, Platform, StyleSheet, Text, View} from 'react-native';
 import {AppContainer} from "./router/router";
+import codePush from 'react-native-code-push';
 
-export default class App extends Component {
+class App extends Component {
+
+  codePushStatusDidChange(status) {
+    switch(status) {
+      case codePush.SyncStatus.CHECKING_FOR_UPDATE:
+        // console.log("Checking for updates.");
+          Alert.alert('checking for updates')
+        break;
+      case codePush.SyncStatus.DOWNLOADING_PACKAGE:
+        console.log("Downloading package.");
+        break;
+      case codePush.SyncStatus.INSTALLING_UPDATE:
+        console.log("Installing update.");
+        break;
+      case codePush.SyncStatus.UP_TO_DATE:
+        console.log("Up-to-date.");
+        break;
+      case codePush.SyncStatus.UPDATE_INSTALLED:
+        console.log("Update installed.");
+        break;
+    }
+  }
+
+  codePushDownloadDidProgress(progress) {
+    console.log(progress.receivedBytes + " of " + progress.totalBytes + " received.");
+  }
+
   render() {
     return (
         <AppContainer />
     );
   }
 }
+
+const codePushOptions = {
+  checkFrequency: codePush.CheckFrequency.ON_APP_START
+};
+
+export default codePush(codePushOptions)(App);
 
 const styles = StyleSheet.create({
   container: {

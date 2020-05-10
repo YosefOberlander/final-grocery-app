@@ -91,3 +91,7 @@ If you get an error regarding react-native-prompt-android make sure it's install
   - [x] Fix issue where the user will have to close and reopen the app if the email or password is incorrect.
   - [ ] Remove AsyncStorage from react-native and use react-native-community package.
   - [ ] Remove usage from componentWillMount().
+  
+  ## CodePush
+  
+  codepush push update for ios - `appcenter codepush release-react -a yosef-surplusr-us.com/Grocery -d Production`

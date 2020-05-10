@@ -40,10 +40,12 @@ target 'Grocery' do
 
   # Automatically detect installed unimodules
   use_unimodules!
-  pod 'RNGestureHandler', :path => '../node_modules/react-native-gesture-handler'
+
+ pod 'RNGestureHandler', :path => '../node_modules/react-native-gesture-handler'
 
   pod 'RNReanimated', :path => '../node_modules/react-native-reanimated'
 
   pod 'RNScreens', :path => '../node_modules/react-native-screens'
+  pod 'CodePush', :path => '../node_modules/react-native-code-push'
 
 end
